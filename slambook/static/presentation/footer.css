@@ -1,0 +1,28 @@
+footer{
+    font-size: medium;
+    align-items: center;
+    padding: 5px;
+    background-color: rgb(157, 131, 180);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: small;
+  display: inline-flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    
+}
+footer a{
+  padding: 15px 25px;
+  color: #393838;
+}
+
+#copyrightinfo{
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+#quicklinks{
+ margin-right: auto;
+ margin-left: 20px;   
+}

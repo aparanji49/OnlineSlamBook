@@ -1,0 +1,35 @@
+.questions-display-l{
+    width: 50%;
+    margin: auto;
+    display: grid;
+    justify-items: end;
+}
+/*#add-question-button{*/
+/*    background-color: #393838;*/
+/*  color: white;*/
+/*  text-decoration: none;*/
+/*  padding: 5px 5px;*/
+/*}*/
+table, th, td {
+    border:1px black solid;
+    border-collapse: collapse;
+    padding: 5px;
+    text-align: center;
+}
+
+button, .btn{
+    background-color: #393838;
+  color: white;
+  text-decoration: none;
+  padding: 5px 5px;
+}
+
+button:hover{
+    background-color: rgb(128, 128, 128);
+    border: 1px black solid;
+}
+
+.questions-add{
+    margin-bottom: 10px;
+}
+

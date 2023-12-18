@@ -1,0 +1,13 @@
+{% extends "slambook/base.html" %}
+{% load humanize %}
+{% load static %}
+
+{% block page-title %}Responses{% endblock %}
+
+{% block css-files %}
+    <link rel="stylesheet" href="{% static "presentation/friends.css"%}">
+{% endblock %}
+
+{% block main-content %}
+    <p>This is where all friends form requests are displayed - requests page</p>
+{% endblock %}

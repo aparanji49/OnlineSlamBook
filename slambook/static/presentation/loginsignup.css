@@ -1,0 +1,33 @@
+form{
+    border: 2px solid black;
+    padding: 10px;
+    justify-content: center;
+}
+
+input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  a:not(#logo,#logolink){
+    background-color: #393838;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    width: fit-content;
+  }
+
+  .login, .signup{
+    width: 50%;
+    margin: auto;
+  }
+
+  form a, form p, form h5{
+    width: 60%;
+      margin: 5px auto auto;
+  }

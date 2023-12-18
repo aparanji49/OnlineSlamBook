@@ -1,0 +1,4 @@
+ul#activitylist{
+    display: flex;
+    flex-direction: column;
+}

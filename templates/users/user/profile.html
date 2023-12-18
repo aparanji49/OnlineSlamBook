@@ -1,0 +1,77 @@
+{% extends "slambook/base.html" %}
+{% load static %}
+
+{% block page-title %}Profile for {{ user.username }}{% endblock %}
+
+{% block css-files %}
+    <link rel="stylesheet" href="{% static "presentation/profile.css" %}">
+{% endblock %}
+
+{% block main-content %}
+    <div class="profile">
+        {% if request.session.username %}
+            {% if messages %}
+                <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% include "actions/action/feed.html" %}
+            <br>
+            <h2>Profile: {{ user.username }}</h2>
+            {% if current_role == "admin" or current_username == user.username %}
+            <form id="profile-form" method="post" action="{% url 'users:update_profile' user.username %}">
+                <dl>
+                    <dt>Role</dt>
+                    <dd>{{ user.details.role }}</dd>
+                    <dt>Username</dt>
+                    <dd>{{ user.username }}</dd>
+                </dl>
+                <label for="profile-email">Email address:</label>
+                <input type="text" id="profile-email" name="profile_email" value="{{ user.email }}" required>
+                <label for="profile-firstname">First Name:</label>
+                <input type="text" id="profile-firstname" name="profile_first_name" value="{{ user.first_name }}" required>
+                <label for="profile-lastname">Last Name:</label>
+                <input type="text" id="profile-lastname" name="profile_last_name" value="{{ user.last_name }}" required>
+                <label for="profile-password">Password:</label>
+                <input type="password" id="profile-password" name="profile_password" required>
+                <label for="schools">Choose a school:</label>
+                <select name="schools" id="schools">
+                    <option value="school1">school1</option>
+                    <option value="school2">school2</option>
+                    <option value="school3">school3</option>
+                    <option value="school4">school4</option>
+                </select>
+                <input type="submit" name="submit" value="Update">
+                {% csrf_token %}
+            </form>
+            {% else %}
+                <dl>
+                        <dt>Role</dt>
+                        <dd>{{ user.details.role }}</dd>
+                        <dt>Username</dt>
+                        <dd>{{ user.username }}</dd>
+                        <dt>Email Address</dt>
+                        <dd>{{ user.email }}</dd>
+                        <dt>First Name</dt>
+                        <dd>{{ user.first_name }}</dd>
+                        <dt>Last Name</dt>
+                        <dd>{{ user.last_name }}</dd>
+                        <dt>School</dt>
+                        <dd>{{ user.details.school }}</dd>
+                </dl>
+            {% endif %}
+{#        <h5 style="color: green;">Password saved successfully!</h5>#}
+        {% else %}
+    {# if user is not logged in#}
+            {% if messages %}
+                <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}

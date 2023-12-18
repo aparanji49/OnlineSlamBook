@@ -1,0 +1,7 @@
+<!-- comment_form.html -->
+
+<form id="edit-comment-form" method="post" action="{% url 'slambook:edit_comment' comment.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Changes</button>
+</form>

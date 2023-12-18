@@ -1,0 +1,30 @@
+{% extends "slambook/base.html" %}
+{% load static %}
+
+{% block page-title %}Login{% endblock %}
+
+{% block css-files %}
+    <link rel="stylesheet" href="{% static 'presentation/loginsignup.css' %}">
+{% endblock %}
+
+{% block main-content %}
+    <div class="login">
+                <h2>Login</h2>
+                <form id="login-form" action="{% url 'users:login_user' %}" method="POST">
+                    {% csrf_token %}
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <label for="login-username">Enter username:</label>
+                    <input type="text" name="uname" id="login-username" placeholder="ex: abcd" required>
+                    <label for="password">Enter password:</label>
+                    <input type="password" name="pw" id="password" required>
+                    <button type="submit">Login</button>
+                    <p>Not yet registered? <a href="{% url 'users:signup' %}">Create an account</a></p>
+                </form>
+            </div>
+{% endblock %}

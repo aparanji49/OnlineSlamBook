@@ -1,0 +1,10 @@
+{% extends "slambook/base.html" %}
+
+{% block page-title %}Help{% endblock %}
+
+
+{% block main-content %}
+    <div class="helpsection">
+            <p>Welcome to Online slam book website! Here you can add and customize friends and questions to be posted in the slam book. In the <a href="{% url 'slambook:slambook_home' %}">Home page</a>, you can find the history and quick links. <a href="{% url 'slambook:slambook_themes' %}">Themes</a> page has all the themes listed. Users can add, edit and delete friends in <a href="{% url 'slambook:slambook_friends' %}">Friends</a> page. They can also view the status of the form whether to send a form to newly added friend, sent the form, or filled by the friend. In <a href="{% url 'slambook:slambook_questions' %}">Questions</a> page, users can add customized questions, also can modify and delete them.</p>
+        </div>
+{% endblock %}

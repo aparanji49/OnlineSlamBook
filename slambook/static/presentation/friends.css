@@ -1,0 +1,109 @@
+
+ul.messages{
+    font-weight: bold;
+    padding: 1em;
+    margin: 0;
+    width: 100%;
+}
+
+ul.messages li.success{
+    background-color: lightgreen;
+    padding: 1em;
+    margin: 0.25em;
+    width: 100%;
+    display: block;
+}
+
+ul.messages li.info{
+    background-color: lightblue;
+    padding: 1em;
+    margin: 0.25em;
+    width: 100%;
+    display: block;
+}
+
+ul.messages li.warning{
+    background-color: lightcoral;
+    padding: 1em;
+    margin: 0.25em;
+    width: 100%;
+    display: block;
+}
+
+
+
+.friends-display-l{
+    width: 75%;
+    margin: auto;
+    display: grid;
+    justify-items: center;
+
+}
+
+td, th{
+    padding: 5px;
+    text-align: left;
+    align-self: center;
+}
+
+table{
+    display: block;
+}
+
+table, th, td{
+    border-collapse: collapse;
+    border: 1px #393838 solid;
+}
+
+
+.friends-actions{
+    margin-bottom: 10px;
+    display: inline-flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.friends-search{
+    display: inline-flex;
+    justify-content: space-around;
+    flex-direction: row;
+    height: min-content;
+}
+
+button, .btn{
+    background-color: #393838;
+  color: white;
+  text-decoration: none;
+  padding: 5px 5px;
+}
+svg{
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+}
+
+.friends-actions{
+    width: 100%;
+}
+
+.search-error-message{
+    padding: 0;
+    margin-left: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: small;
+    display: inline-flex;
+    align-items: center;
+    color: red;
+    
+}
+
+.search-success-message{
+    padding: 0;
+    margin-left: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: small;
+    display: inline-flex;
+    align-items: center;
+    color: green;
+}

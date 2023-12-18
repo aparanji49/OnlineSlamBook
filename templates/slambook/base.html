@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>OnlineSlamBook|{% block page-title %}{% endblock %}</title>
+{#    <link rel="stylesheet" href="../presentation/header.css">#}
+{#    <link rel="stylesheet" href="../presentation/main.css">#}
+{#    <link rel="stylesheet" href="../presentation/footer.css">#}
+        <link rel="stylesheet" href="{% static "presentation/header.css" %}">
+        <link rel="stylesheet" href="{% static "presentation/main.css" %}">
+        <link rel="stylesheet" href="{% static "presentation/footer.css" %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        {% block css-files %}{% endblock %}
+    </head>
+    <body>
+        <header>
+        <!--Menu items-->
+            <a href="{% url 'slambook:slambook_home'%}" id="logolink"><img src="{% static 'images/logo.png' %}" alt="logo" id="logo"></a>
+            {% if request.session.username %}
+                <ul>
+                    {% if request.session.role == "admin" %}
+                        <li><a href="{% url 'slambook:slambook_themes'%}">Themes</a></li>
+                        <li><a href="{% url 'users:list_users'%}">Users</a></li>
+                    {% else %}
+                        <li><a href="{% url 'slambook:slambook_home'%}">Home</a></li>
+                        <li><a href="{% url 'slambook:slambook_themes'%}">Themes</a></li>
+                        <li><a href="{% url 'slambook:slambook_friends'%}">Friends</a></li>
+                        <li><a href="{% url 'slambook:slambook_questions'%}">Questions</a></li>
+                        <li><a href="{% url 'slambook:slambook_responses'%}">Responses</a></li>
+                        <li><a href="{% url 'slambook:slambook_received_requests'%}">Requests</a></li>
+                    {% endif %}
+                </ul>
+            {% else %}
+                <ul>
+                    <li><a href="{% url 'slambook:slambook_home'%}">Home</a></li>
+                    <li><a href="{% url 'slambook:slambook_themes'%}">Themes</a></li>
+                </ul>
+            {% endif %}
+            {% if request.session.username %}
+                <div class="userinfo">
+                    <h6>Hi! <a href="{% url 'users:profile' request.session.username %}">{{ request.session.username }}</a></h6> <a href="{% url 'users:logout_user'%}" id="logout">Logout</a>
+                </div>
+            {% else %}
+                <div class="loginreg">
+                    <a href="{% url 'users:login_user'%}">Login</a>
+                    <a href="{% url 'users:signup'%}">SignUp</a>
+                </div>
+            {% endif %}
+        </header>
+        <main>
+{#        <div class="aboutsection">#}
+{#            <h3>History of Slam Book</h3>#}
+{#            <hr>#}
+{#            <p>The tradition of slam books among friends can be traced back to the early 20th century. It gained popularity in the 1920s and 1930s, primarily as a pastime among young people in the United States. Initially, these books were simple notebooks or diaries where friends would jot down their thoughts, personal information, and responses to a set of questions provided by the owner of the book. These questions often revolved around personal preferences, likes, dislikes, and quirky details about each person.</p>#}
+{##}
+{#            <p>In the 1960s and 1970s, slam books evolved further as a means of social interaction and self-expression. They were often used as a way to collect memories and insights about friends during a particular phase of life. The questions became more diverse and reflective of the changing times, covering topics such as music preferences, crushes, and future aspirations. Slam books served as a fun and creative way for friends to bond and share their inner thoughts.</p>#}
+{##}
+{#            <p>With the advent of the digital age in the late 20th century and the 21st century, slam books have transitioned to online platforms and social media, making it even easier for friends to share their thoughts and memories with one another. While the format may have changed, the essence of slam books as a tool for friends to connect and document their personal histories remains a cherished tradition among many.</p>#}
+{##}
+{#            <h3>How to use this website?</h3>#}
+{#            <hr>#}
+{#            <p>Please visit <a href="helploggedout.html">Help section</a> for tutorial</p>#}
+{#        </div>#}
+            {% block main-content %}{% endblock %}
+        </main>
+        <footer>
+            <div id="quicklinks">
+                <a href="{% url 'slambook:slambook_home'%}">Home</a> | <a href="{% url 'slambook:slambook_themes'%}">Themes</a> | <a
+                    href="{% url 'slambook:slambook_friends'%}">Friends</a> | <a href="{% url 'slambook:slambook_questions'%}">Questions</a> | <a
+                    href="{% url 'slambook:slambook_help'%}">Help</a>
+            </div>
+            <p id="copyrightinfo">Copyright &copy; OnlineSlamBook</p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+{% extends "slambook/base.html" %}
+{% load static %}
+
+{% block page-title %}Home{% endblock %}
+
+{% block css-files %}
+    <link rel="stylesheet" href="{% static "presentation/activity.css" %}">
+{% endblock %}
+{% block main-content %}
+    <div class="aboutsection">
+        {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% if request.session.username %}
+            {% include "actions/action/feed.html" %}
+            <br>
+            <h3>How to use this website?</h3>
+            <hr>
+            <p>Please visit <a href="{% url 'slambook:slambook_help' %}">Help section</a> for additional help</p>
+        {% else %}
+            <h3>History of Slam Book</h3>
+            <hr>
+            <p>The tradition of slam books among friends can be traced back to the early 20th century. It gained popularity in the 1920s and 1930s, primarily as a pastime among young people in the United States. Initially, these books were simple notebooks or diaries where friends would jot down their thoughts, personal information, and responses to a set of questions provided by the owner of the book. These questions often revolved around personal preferences, likes, dislikes, and quirky details about each person.</p>
+            <p>In the 1960s and 1970s, slam books evolved further as a means of social interaction and self-expression. They were often used as a way to collect memories and insights about friends during a particular phase of life. The questions became more diverse and reflective of the changing times, covering topics such as music preferences, crushes, and future aspirations. Slam books served as a fun and creative way for friends to bond and share their inner thoughts.</p>
+            <p>With the advent of the digital age in the late 20th century and the 21st century, slam books have transitioned to online platforms and social media, making it even easier for friends to share their thoughts and memories with one another. While the format may have changed, the essence of slam books as a tool for friends to connect and document their personal histories remains a cherished tradition among many.</p>
+            <hr>
+            <h3>What is this website for?</h3>
+            <p>In this website, as a logged-in user, you can add friends and custom questions. Further, send slambook forms to added friends and view their responses. While sending forms to your friends, you can select one of the predefined themes.</p>
+        {% endif %}
+    </div>
+{% endblock %}

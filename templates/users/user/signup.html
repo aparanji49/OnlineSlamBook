@@ -1,0 +1,39 @@
+{% extends "slambook/base.html" %}
+{% load static %}
+
+{% block page-title %}SignUp{% endblock %}
+
+{% block css-files %}
+    <link rel="stylesheet" href="{% static 'presentation/loginsignup.css' %}">
+{% endblock %}
+
+{% block main-content %}
+    <div class="signup">
+                <h2>Sign Up</h2>
+                <form id="signup-form" method="post" action="{% url 'users:signup' %}">
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <label for="register-username">Enter Username:</label>
+                    <input type="text" id="register-username" name="username" placeholder="ex: abcd" required>
+                    <label for="register-firstname">Enter First Name:</label>
+                    <input type="text" id="register-firstname" name="first_name" placeholder="ex: ab" required>
+                    <label for="register-lastname">Enter Last Name:</label>
+                    <input type="text" id="register-lastname" name="last_name" placeholder="ex: cd" required>
+                    <label for="register-emailid">Enter Email address:</label>
+                    <input type="email" id="register-emailid" name="email" placeholder="ex: abcd@example.com" required>
+                    <label for="register-password">Enter password:</label>
+                    <input type="password" id="register-password" name="password" required>
+                    <input type="submit" name="submit" value="Sign Up">
+                    {% csrf_token %}
+{#                    <h5 style="color: red;">Password must be more than 8 characters</h5>#}
+
+
+                    <p>Already a user? <a href="{% url 'users:user_login_page' %}">Login here</a></p>
+                </form>
+            </div>
+{% endblock %}

@@ -1,0 +1,84 @@
+
+body{
+    margin: 0;
+}
+header{
+    background-color:  rgb(157, 131, 180);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    align-items: center;
+    margin: 0;
+    padding: 5px;
+    display: inline-flex;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+}
+
+img{
+    border:1px white solid;
+    border-radius: 5px;
+}
+
+header a:not(#username,#logo,#logolink){
+    background-color: #393838;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+
+}
+
+#logolink{
+    padding: 0;
+    margin: 0;
+}
+
+#logo{
+    height: 50px;
+    width: auto;
+    padding: 0;
+    margin: 0;
+}
+
+ul{
+    list-style: none;
+}
+
+ul li{
+    flex-direction: row;
+    display: inline;
+}
+
+@media all and (max-width: 375px) {
+    ul li{
+        display: block;
+    }
+
+header a:not(#username,#logo,#logolink){
+  display: block;
+
+}
+#logo,#logolink{
+ height: 20px;
+ width: 30px;
+}
+
+}
+.userinfo, .loginreg{
+    float: right;
+    padding: 0px 2px 0px 0px;
+    margin: 20px 20px 20px auto;
+    height:35px;    
+    display: flex;
+    align-items: center;
+}
+
+.userinfo p, .loginreg {
+    margin-right: 5px;
+}
+
+#username{
+    color: #393838;
+    padding: 10px 20px;
+}

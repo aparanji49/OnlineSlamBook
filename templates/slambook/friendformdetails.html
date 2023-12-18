@@ -1,0 +1,57 @@
+{% extends "slambook/base.html" %}
+{% load humanize %}
+{% load static %}
+
+{% block page-title %}Form{% endblock %}
+
+{% block css-files %}
+    <link rel="stylesheet" href="{% static "presentation/friends.css"%}">
+{% endblock %}
+
+{% block main-content %}
+    <p>This page is shown after clicking on form status link in friends detail page. based n the status, show new/filled form. new form will not have commenting option. filled form will have commenting option.</p>
+
+    {% if friend.status == "send form" %}
+    	<h2>{{ friend.status }}</h2>
+        <form method="post" action="" id="send-form">
+            <div class="mb-3"><p>select atleast 2 questions for your friend {{ friend.name }}</p></div>
+{#for loop - questions list from db#}
+            <div class="mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Question 1
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Question 2
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Question 3
+                    </label>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn" id="sendformbtn">Send</button>
+            {% csrf_token %}
+        </form>
+    {% elif friend.status == "form sent"  %}
+       <p>Form is sent to your friend {{ friend.name }}</p>
+        <div>
+
+        </div>
+    {% elif friend.status == "response received"  %}
+
+<p>Response received from your friend {{ friend.name }}</p>
+        <div>
+{#            {% url 'slambook:slambook_friend_response' friend.id %}#}
+<a href="#">click to view response</a>
+        </div>
+    {% endif %}
+{% endblock %}

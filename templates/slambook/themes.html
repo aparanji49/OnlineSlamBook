@@ -1,0 +1,45 @@
+{% extends "slambook/base.html" %}
+{% load static %}
+
+{% block page-title %}Themes{% endblock %}
+
+{% block css-files %}
+    <link rel="stylesheet" href="{% static 'presentation/themes.css' %}">
+{% endblock %}
+
+{% block main-content %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <div class="themesdisplay">
+            <div class="responsive">
+                <div class="gallery">
+                    <img src="{% static 'images/Theme 1.png' %}" alt="Theme 1" width="1200" height="800">
+                    <div class="desc">Theme 1</div>
+                </div>
+            </div>
+            <div class="responsive">
+                <div class="gallery">
+                    <img src="{% static 'images/Theme 2.png' %}" alt="Theme 2" width="1200" height="800">
+                    <div class="desc">Theme 2</div>
+                </div>
+            </div>
+            <div class="responsive">
+                <div class="gallery">
+                    <img src="{% static 'images/Theme 3.png' %}" alt="Theme 3" width="1200" height="800">
+                    <div class="desc">Theme 3</div>
+                </div>
+            </div>
+            <div class="responsive">
+                <div class="gallery">
+                    <img src="{% static 'images/Theme 4.png' %}" alt="Theme 4" width="1200" height="800">
+                    <div class="desc">Theme 4</div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

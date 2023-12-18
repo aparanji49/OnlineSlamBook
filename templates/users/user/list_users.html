@@ -1,0 +1,37 @@
+{% extends "slambook/base.html" %}
+{% load static %}
+
+{% block page-title %}Login{% endblock %}
+
+{% block css-files %}
+    <link rel="stylesheet" href="{% static 'presentation/main.css' %}">
+{% endblock %}
+
+{% block main-content %}
+    <h5>list of users</h5>
+    <div class="list_of_users">
+        <table>
+            <tbody>
+                <tr>
+                    <th>User</th>
+                    <th>Make Admin</th>
+                </tr>
+                {% for entry in all_users %}
+                    <tr>
+                        <td class="user"><a href="{% url 'users:profile' entry.username %}">{{ entry.username }}</a></td>
+                        <td>
+{#                            {% url 'users:make_user_admin' entry.username %}#}
+                            <form action="#" method="post">
+                                <select name="make_admin">
+                                    <option value="yes">yes</option>
+                                    <option value="no" selected>no</option>
+                                </select>
+                            </form>
+                        </td>
+                    </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+    </div>
+
+{% endblock %}
